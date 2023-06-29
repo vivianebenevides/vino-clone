@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/scrape-saq', [SAQController::class, 'scrapeSAQ']);
+Route::post('/importer-bouteilles', [SAQController::class, 'scrapeSAQ'])->name('importer-bouteilles');;
 

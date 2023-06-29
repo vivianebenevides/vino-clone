@@ -12,12 +12,15 @@ class SAQ
     const DUPLICATION = 'duplication';
     const ERREURDB = 'erreurdb';
     const INSERE = 'Nouvelle bouteille insérée';
+    
 
     private $stmt;
+    private $totalBouteilles;
 
     public function __construct()
     {
         $this->stmt = DB::connection()->getPdo()->prepare("INSERT INTO bouteilles(nom, type, image, code_saq, pays, description, prix_saq, url_saq, url_img, format) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $this->totalBouteilles = 0;
     }
 
     public function getProduits($nombre = 24, $page = 1)
@@ -28,7 +31,7 @@ class SAQ
             ]);
 
         try {
-            $url = "https://www.saq.com/fr/produits/vin/vin-rouge?p=".$page."&product_list_limit=".$nombre."&product_list_order=name_asc";
+            $url = "https://www.saq.com/fr/produits/vin?p=".$page."&product_list_limit=".$nombre."&product_list_order=name_asc";
             $response = $client->get($url);
             $webpage = $response->getBody()->getContents();
         } catch (RequestException $e) {
@@ -54,11 +57,12 @@ class SAQ
                 echo "<br>";
             } else {
                 $i++;
+                 $this->totalBouteilles = $i;
             }
             echo "</p>";
         });
 
-        return $i;
+        return $this->totalBouteilles;
     }
 
     private function recupereInfo($node)

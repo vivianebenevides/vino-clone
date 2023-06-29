@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 
 class SAQController extends Controller
 {
-    public function scrapeSAQ()
+    public function scrapeSAQ(Request $request)
     {
-        $page = 1;
-	    $nombreProduit = 96; //48 ou 96	
+        $nombreProduits = 0;
+        $nombreProduit = $request->input('nombre');
+        $page = $request->input('pages');
         $saq = new SAQ();
-        for($i=0; $i<4;$i++){
-            $nombreProduits = $saq->getProduits($nombreProduit,$page+$i);
+        for($i=1; $i<= $page ;$i++){
+            $nombreProduits += $saq->getProduits($nombreProduit,$i);
         }
         
         return "Nombre de produits insérés : " . $nombreProduits;
