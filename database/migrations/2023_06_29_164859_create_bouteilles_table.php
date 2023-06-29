@@ -19,16 +19,13 @@ class CreateBouteillesTable extends Migration
             $table->string('image',200)->nullable();
             $table->string('code_saq',50)->nullable();
             $table->string('description',200)->nullable();
+            $table->string('pays',50)->nullable();
             $table->float('prix_saq')->nullable();
             $table->string('url_saq',200)->nullable();
             $table->string('url_img',200)->nullable();
             $table->string('format',200)->nullable();
-            $table->integer('type')->nullable();
-            $table->timestamps();
-
-            $table->foreign('type')
-                ->references('id')
-                ->on('types');            
+            $table->string('type',50)->nullable();
+            $table->timestamps();            
         });
     }
 
