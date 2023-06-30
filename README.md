@@ -8,6 +8,7 @@ Marche à suivre
 - lancer l'application php artisan serve
 - faire votre chois dans le formulaire (nbPages et nbBouteilles).
 - vérifier la base de données .
+- version php utilisé 8.1.0
 
 
 
