@@ -6,9 +6,11 @@ Marche à suivre
 
 - créer une base de données appelée "vino"
 - lancer l'application php artisan serve
-- faire votre chois dans le formulaire (nbPages et nbBouteilles).
+- faire votre choix dans le formulaire (nbPages et nbBouteilles).
 - vérifier la base de données .
-- version php utilisé 8.1.0
+- version php utilisé 8.1.0.
+- Bibliotheque utilisé pour l'importation des donnés de la SAQ 
+    + Symfony\Component\DomCrawler\Crawler
 
 
 
