@@ -8,9 +8,12 @@ Marche à suivre
 - lancer l'application php artisan serve
 - faire votre choix dans le formulaire (nbPages et nbBouteilles).
 - vérifier la base de données .
-- version php utilisé 8.1.0.
+- version php utilisé 8.0.0.
 - Bibliotheque utilisé pour l'importation des donnés de la SAQ 
-    + Symfony\Component\DomCrawler\Crawler
+    + Symfony\Component\DomCrawler\Crawler v 5.0
+
+- ajout du framework VueJS, mais à date c'est en pause 
+    pour tester "http://127.0.0.1:8000/test"
 
 
 

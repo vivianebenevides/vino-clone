@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Importer les bouteilles</title>
-</head>
-<body>
-    <h1>Importer les bouteilles</h1>
+@extends('layouts.app')
+@section('content')
+<div>
+     <h1>Importer les bouteilles</h1>
 
     <form method="POST" action="{{ route('importer-bouteilles') }}">
         @csrf
@@ -24,5 +21,8 @@
         <br><br>
         <input type="submit" value="Importer les bouteilles" name="submit">
     </form>
-</body>
-</html>
+   
+</div>
+
+   
+@endsection
