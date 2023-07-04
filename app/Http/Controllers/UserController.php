@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+                'nom' => $request->nom,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+        ]);
+        return redirect(route('importer-bouteilles'));
     }
 
     /**
