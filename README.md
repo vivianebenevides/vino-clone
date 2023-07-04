@@ -5,6 +5,7 @@
 Marche à suivre
 
 - créer une base de données appelée "vino"
+- faire : php artisan migrate:refresh --seed (Pour exécuter la migration et seeder pour le Role et le Type)
 - lancer l'application php artisan serve
 - faire votre choix dans le formulaire (nbPages et nbBouteilles).
 - vérifier la base de données .
