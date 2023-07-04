@@ -10,13 +10,20 @@ class Cellier extends Model
     use HasFactory;
 
     protected $fillable = [
-        'bouteille_id',
-        'date_achat',
-        'garde_jusqua',
-        'notes',
-        'prix',
-        'quantite',
-        'millesime',
+        
+        'id',
+        'note',
         'user_id',
-    ];    
+    ]; 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function bouteilles()
+    {
+        return $this->belongsToMany(Bouteille::class, 'bouteilles_celliers', 'cellier_id', 'bouteille_id')
+            ->withPivot('quantite', 'note');
+    }       
 }

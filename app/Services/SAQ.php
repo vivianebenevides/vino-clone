@@ -19,7 +19,7 @@ class SAQ
 
     public function __construct()
     {
-        $this->stmt = DB::connection()->getPdo()->prepare("INSERT INTO bouteilles(nom, type, image, code_saq, pays, description, prix_saq, url_saq, url_img, format) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $this->stmt = DB::connection()->getPdo()->prepare("INSERT INTO bouteilles(nom, type_id, image, code_saq, pays, description, prix_saq, url_saq, url_img, format) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $this->totalBouteilles = 0;
     }
 
@@ -79,8 +79,14 @@ class SAQ
         $info->desc = new \stdClass();
         $info->desc->texte = $this->nettoyerEspace($descNode->text());
         $aDesc = explode("|", $info->desc->texte);
+        // tableau associatif pour faire la conversion du type de bouteille dans la base de données
+        $type_bouteilles = [
+            "Vin blanc" => 1,
+            "Vin rouge" => 2,
+            "Vin rosé" => 3
+        ];
         if (count($aDesc) == 3) {
-            $info->desc->type = trim($aDesc[0]);
+            $info->desc->type_id = $type_bouteilles[trim($aDesc[0])]; 
             $info->desc->format = trim($aDesc[1]);
             $info->desc->pays = trim($aDesc[2]);
         }
@@ -110,7 +116,7 @@ class SAQ
             // Insérer le nouveau produit dans la base de données
             $resultat = $this->stmt->execute([
                 $info->nom,
-                $info->desc->type,
+                $info->desc->type_id,
                 $info->img,
                 $info->desc->code_SAQ,
                 $info->desc->pays,

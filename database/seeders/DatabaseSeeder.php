@@ -11,8 +11,11 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+    // execution du seeder pour remplir les tables types et roles
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        
+        $this->call(RolesTableSeeder::class);
+        $this->call(TypesTableSeeder::class);
     }
 }
