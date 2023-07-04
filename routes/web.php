@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SAQController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +16,30 @@ use App\Http\Controllers\SAQController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/importation', function () {
+    return view('importation');
 });
 
 Route::get('/test', function () {
     return view('test');
 });
 
-Route::post('/importer-bouteilles', [SAQController::class, 'scrapeSAQ'])->name('importer-bouteilles');;
+// routes pour la vue login
+Route::get('/',  [AuthController::class, 'index'])->name('login');
+Route::post('/',  [AuthController::class, 'authentification']);
+Route::get('/login',  [AuthController::class, 'index'])->name('login');
+Route::post('/login',  [AuthController::class, 'authentification']);
+
+Route::get('/logout',  [AuthController::class, 'deconnexion']);
+
+
+
+//routes pour la vue création utilisateur
+Route::get('/create',  [UserController::class, 'index'])->name('user.create');
+Route::post('/create',  [UserController::class, 'store']);
+
+
+Route::get('/importer-bouteilles', [SAQController::class, 'index'])->name('importer-bouteilles')->middleware('auth');
+
+Route::post('/importer-bouteilles', [SAQController::class, 'scrapeSAQ']);
 

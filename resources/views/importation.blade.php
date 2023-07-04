@@ -20,9 +20,9 @@
         </select>
         <br><br>
         <input type="submit" value="Importer les bouteilles" name="submit">
+        <a href="/logout">Déconnexion</a>
     </form>
    
 </div>
 
-   
 @endsection

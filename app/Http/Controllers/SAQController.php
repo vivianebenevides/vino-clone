@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class SAQController extends Controller
 {
+    public function index(){
+        return view('importation');
+    }
     public function scrapeSAQ(Request $request)
     {
         $nombreProduits = 0;
