@@ -22,16 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('cp')->nullable();
             $table->string('tel')->nullable();          
             $table->string('email')->unique();
-            $table->unsignedBigInteger('role_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
-
-            // clé etrangaire du role
-             $table->foreign('role_id')
-                    ->references('id')
-                    ->on('roles');             
+            $table->timestamps();          
         });
     }
 
