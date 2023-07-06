@@ -30,6 +30,8 @@ Route::post('/',  [AuthController::class, 'authentification']);
 Route::get('/login',  [AuthController::class, 'index'])->name('login');
 Route::post('/login',  [AuthController::class, 'authentification']);
 
+Route::get('/index',  [AuthController::class, 'accueil'])->name('index')->middleware('auth');
+
 Route::get('/logout',  [AuthController::class, 'deconnexion']);
 
 

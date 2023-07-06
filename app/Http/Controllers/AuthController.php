@@ -17,6 +17,11 @@ class AuthController extends Controller
          return view('auth.login');
     }
 
+    public function accueil()
+    {
+         return view('index');
+    }
+
     public function authentification(Request $request)
     {
         $infoConnexion = $request->only('email', 'password');
@@ -25,7 +30,7 @@ class AuthController extends Controller
         }
         $user = Auth::getProvider()->retrieveByCredentials($infoConnexion);
         Auth::login($user);
-        return redirect(route('importer-bouteilles'));
+        return redirect(route('index'));
     }
 
 
