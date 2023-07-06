@@ -3,7 +3,7 @@
 ## tester importation des données depuis le site de la SAQ
 
 Marche à suivre
-
+- attention pour la configuration Db dans le fichier .env (pour Mac et windows)
 - créer une base de données appelée "vino"
 - faire : php artisan migrate:refresh --seed (Pour exécuter la migration et seeder pour le Role et le Type)
 - lancer l'application php artisan serve
