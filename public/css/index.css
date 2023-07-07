@@ -152,6 +152,12 @@
     justify-content: center;
 }
 
+.btn-carte {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
 .btn-carte a{
     font-size: 9px;
     color: #690102;

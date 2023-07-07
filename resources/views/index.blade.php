@@ -121,15 +121,15 @@
             </div>
             <div class="footer-item">
                 <a href="#">
-                    <img src="{{asset('assets/cellier.png')}}" alt="cellier">
+                    <img src="{{asset('assets/bouteilles.png')}}" alt="cellier">
                 </a>
-                <p>Cellier</p>
+                <p>Bouteilles</p>
             </div>
             <div class="footer-item">
                 <a href="#">
-                    <img src="{{asset('assets/lupe-rouge.png')}}" alt="recherche">
+                    <img src="{{asset('assets/cellier.png')}}" alt="recherche">
                 </a>
-                <p>Recherche</p>
+                <p>Cellier</p>
             </div>
             <div class="footer-item">
                 <a href="login.html">
