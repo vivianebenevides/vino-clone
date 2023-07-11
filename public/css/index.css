@@ -201,4 +201,9 @@ footer {
     color: #690102;
 }
 
+.message-error{
+    width: 100%;
+    color: red;
+}
+
 

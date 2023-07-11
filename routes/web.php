@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SAQController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BouteilleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::post('/',  [AuthController::class, 'authentification']);
 Route::get('/login',  [AuthController::class, 'index'])->name('login');
 Route::post('/login',  [AuthController::class, 'authentification']);
 
-Route::get('/index',  [AuthController::class, 'accueil'])->name('index')->middleware('auth');
+Route::get('/index',  [BouteilleController::class, 'index'])->name('bouteilles.index')->middleware('auth');
 
 Route::get('/logout',  [AuthController::class, 'deconnexion']);
 

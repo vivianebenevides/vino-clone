@@ -1,22 +1,6 @@
 @extends('layouts.app')
+@section('titre', 'VINO')
 @section('content')
-<body>
-    <header>
-        <nav>
-            <div class="nav-bar">
-                <div class="nav-bar-logo">
-                    <h1 class="nav-logo">
-                        The <br />
-                        Vine
-                    </h1>
-                </div>
-                <!-- <div class="nav-bar-menu">
-                    <img src="assets/menu.png" alt="menu">
-                </div> -->
-            </div>
-        </nav>
-    </header>
-    <body>
         <main>
             <section class="container">
                 <div class="titre">
@@ -110,34 +94,4 @@
                 <p>1 | 2 | 3</p>
             </section>
         </main>
-    </body>
-    <footer>
-        <div class="footer-items">
-            <div class="footer-item">
-                <a href="#">
-                    <img src="{{asset('assets/profile.png')}}" alt="profile">
-                </a>
-                <p>Profile</p>
-            </div>
-            <div class="footer-item">
-                <a href="#">
-                    <img src="{{asset('assets/bouteilles.png')}}" alt="cellier">
-                </a>
-                <p>Bouteilles</p>
-            </div>
-            <div class="footer-item">
-                <a href="#">
-                    <img src="{{asset('assets/cellier.png')}}" alt="recherche">
-                </a>
-                <p>Cellier</p>
-            </div>
-            <div class="footer-item">
-                <a href="login.html">
-                    <img src="{{asset('assets/logout.png')}}" alt="logout">
-                </a>
-                <p>Sortir</p>
-            </div>
-        </div>
-    </footer>
-</body>
 @endsection

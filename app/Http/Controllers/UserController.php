@@ -36,12 +36,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
-                'nom' => $request->nom,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
+
+    // Validation des données pour le modèle  user
+        $validatedData = $request->validate([
+            'nom' => 'required|min:2|max:50',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+            'password_confirmation' => 'required|same:password',
         ]);
-        return redirect(route('importer-bouteilles'));
+        if(!$validatedData)
+         //return redirect()->back()->withErrors('')->withInput();
+         return redirect()->back()->with('errors', [])->withInput();
+                
+        $user = User::create([
+                'nom' => $validatedData['nom'],
+                'email' =>  $validatedData['email'],
+                'password' => Hash::make( $validatedData['password']),
+        ]);
+        return redirect(route('bouteilles.index'));
     }
 
     /**

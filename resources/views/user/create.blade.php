@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('titre', 'Création de compte')
+@section('MasquerHeaderFooter', true) // pour afficher ou masquer le header et le footer
 @section('content')
 <main class="auth-container">
       <form method="post" class="auth-form-container">
@@ -19,10 +21,20 @@
             required
           />
         </label>
+        @if($errors->has('nom'))
+            <div class="message-error" >
+              * minimum 2 caracères
+            </div>
+        @endif         
         <label class="auth-form-label">
           <img src="{{asset('assets/mail.png')}}" alt="mail" class="auth-icon" />
           <input type="email" name="email" class="auth-form-input" placeholder="Courriel" required />
         </label>
+        @if($errors->has('email'))
+            <div class="message-error" >
+              * Courriel déjà utilisé
+            </div>
+        @endif         
         <label class="auth-form-label">
           <img src="{{asset('assets/lock.png')}}" alt="lock" class="auth-icon" />
           <input
@@ -32,7 +44,13 @@
             placeholder="Mot de passe"
             required
           />
-        </label>
+        </label> 
+        @if($errors->has('password'))
+            <div class="message-error" >
+              * Format du mot de passe incorrect
+            </div>
+        @endif        
+              
         <label class="auth-form-label">
           <img src="{{asset('assets/lock.png')}}" alt="lock" class="auth-icon" />
           <input
@@ -43,13 +61,21 @@
             required
           />
         </label>
+        @if($errors->has('password_confirmation'))
+            <div class="message-error" >
+              * Mot de passe de confirmation incorrect
+            </div>
+        @endif          
         <input
           type="submit"
           class="auth-form-input-submit"
           value="Enregistrer"
         />
+        
+        <div class="auth-form-text">* le Mot de passe doit avoir au moins 6 caractèrs, une majiscule, un caractère spéciale </div> 
       </form>
       <a href="/login" class="auth-form-text">Connexion</a>
+       
     </main>
 
 @endsection

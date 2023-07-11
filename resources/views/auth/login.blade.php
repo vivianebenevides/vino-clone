@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('titre', 'Authentification')
+@section('MasquerHeaderFooter', true)
 @section('content')
 <main class="auth-container">
     <form method="post" class="auth-form-container">
@@ -16,7 +18,7 @@
             class="auth-icon"
             placeholder="Courriel"
             />
-        </label>
+        </label>        
         <label class="auth-form-label">
             <img src="{{asset('assets/lock.png')}}" alt="lock" class="auth-icon" />
             <input
@@ -26,6 +28,12 @@
             placeholder="Mot de passe"
             />
         </label>
+
+        @if($errors->any())
+            <div class="alert alert-danger fs-6" >
+                {{$errors->first()}}
+            </div>
+        @endif        
 
         <div class="auth-form-options-container">
             <div>
