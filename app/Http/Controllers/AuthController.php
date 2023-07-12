@@ -17,20 +17,18 @@ class AuthController extends Controller
          return view('auth.login');
     }
 
-    public function accueil()
-    {
-         return view('index');
-    }
 
     public function authentification(Request $request)
     {
+
         $infoConnexion = $request->only('email', 'password');
         if (!Auth::validate($infoConnexion)) {
-            return redirect()->back();
+            return redirect()->back()->withErrors(__('validation.login.error'))->withInput();
+
         }
         $user = Auth::getProvider()->retrieveByCredentials($infoConnexion);
         Auth::login($user);
-        return redirect(route('index'));
+        return redirect(route('bouteilles.index'));
     }
 
 

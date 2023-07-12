@@ -68,7 +68,7 @@ class SAQ
     private function recupereInfo($node)
     {
         $info = new \stdClass();
-        $info->img = $node->filter('img')->attr('src');
+        $info->img = $node->filter('img.product-image-photo')->attr('src');
         $a_titre = $node->filter('a')->eq(1);
         $info->url = $a_titre->attr('href');
         $nom = $a_titre->text();

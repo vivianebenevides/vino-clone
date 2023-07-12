@@ -173,6 +173,16 @@
     text-align: center;
 }
 
+
+.pagination .page-item.active .page-link {
+    background-color: #ab9b9b;
+    border-color: #ab9b9b; 
+}
+
+.pagination .page-item .page-link {
+     color: #690102;
+}
+
 /* Footer */
 
 footer {
@@ -199,6 +209,21 @@ footer {
 .footer-item p {
     font-size: 10px;
     color: #690102;
+}
+
+.message-error{
+    width: 100%;
+    color: red;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+    padding-bottom: 80px; /* Ajustez cette valeur pour correspondre à la hauteur du footer */
 }
 
 
