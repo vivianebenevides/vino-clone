@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bouteille;
 
 class BouteilleController extends Controller
 {
@@ -13,9 +14,9 @@ class BouteilleController extends Controller
      */
     public function index()
     {
-          
-         return view('bouteilles.index');
-   
+
+        $bouteilles = Bouteille::paginate(30);
+         return view('bouteilles.index',['bouteilles' => $bouteilles]);
     }
 
     /**
@@ -47,7 +48,17 @@ class BouteilleController extends Controller
      */
     public function show($id)
     {
-        //
+
+
+        $bouteille = Bouteille::find($id);
+
+        // Vérifier si la bouteille existe
+        if (!$bouteille) {
+            return redirect()->route('bouteilles.index')->with('error', 'Bouteille non trouvée');
+        }
+
+        return view('bouteilles.details', ['bouteille' => $bouteille]);
+
     }
 
     /**

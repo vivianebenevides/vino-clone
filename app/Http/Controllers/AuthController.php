@@ -23,7 +23,8 @@ class AuthController extends Controller
 
         $infoConnexion = $request->only('email', 'password');
         if (!Auth::validate($infoConnexion)) {
-            return redirect()->back()->withErrors('Courriel ou Mot de passe incorrect');
+            return redirect()->back()->withErrors(__('validation.login.error'))->withInput();
+
         }
         $user = Auth::getProvider()->retrieveByCredentials($infoConnexion);
         Auth::login($user);

@@ -45,8 +45,7 @@ class UserController extends Controller
             'password_confirmation' => 'required|same:password',
         ]);
         if(!$validatedData)
-         //return redirect()->back()->withErrors('')->withInput();
-         return redirect()->back()->with('errors', [])->withInput();
+            return redirect()->back()->withErrors($validatedData)->withInput();
                 
         $user = User::create([
                 'nom' => $validatedData['nom'],

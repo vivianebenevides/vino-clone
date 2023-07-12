@@ -13,6 +13,13 @@ return [
     |
     */
 
+    'nom.min' => 'Le nom doit comporter au moins 2 caractères.',
+    'email.unique' => 'Cette adresse e-mail est déjà utilisée.',
+    'password.regex' => 'Le format du mot de passe est incorrect.',
+    'password_confirmation.same' => 'La confirmation du mot de passe est incorrecte.',
+    'login.error' => 'Courriel ou mot de passe incorrecte',
+
+
     'accepted' => 'The :attribute must be accepted.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
     'active_url' => 'The :attribute is not a valid URL.',

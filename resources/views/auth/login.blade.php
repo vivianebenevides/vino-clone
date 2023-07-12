@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('titre', 'Authentification')
-@section('MasquerHeaderFooter', true)
+@section('MasquerHeaderFooter', true)<!--  pour afficher ou masquer le header et le footer -->
 @section('content')
 <main class="auth-container">
     <form method="post" class="auth-form-container">
@@ -17,6 +17,7 @@
             class="auth-form-input"
             class="auth-icon"
             placeholder="Courriel"
+            value="{{ old('email') }}"
             />
         </label>        
         <label class="auth-form-label">
@@ -26,6 +27,7 @@
             name="password"
             class="auth-form-input"
             placeholder="Mot de passe"
+            required
             />
         </label>
 

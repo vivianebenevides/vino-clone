@@ -4,7 +4,7 @@
         <main>
             <section class="container">
                 <div class="titre">
-                    <h1>Bonjour <span>"Nom client"</span></h1>
+                    <h1>Bonjour <span>{{ Auth::user()->nom }}</span></h1>
                 </div>
                 <div>
                     <a href="#" class="text-container">
@@ -19,79 +19,27 @@
             </section>
 
             <section class="catalogue">
-                <div class="carte">
-                    <div>
-                        <img src="{{asset('assets/vin-rouge.png')}}" alt="bouteille">
-                    </div>
-                    <div class="text-carte">
-                        <h2>EA Cartuxa Reserva</h2>
-                        <p>Vin rouge | 750 ml | Portugal</p>
-                        <h3>23,49 $</h3>
-                        <div class="btn-carte">
-                            <a href="#">Détails</a>
-                            <a href="#">Ajouter à mon celier</a>
+                @foreach ($bouteilles as $bouteille)
+                    <div class="carte">
+                        <div>
+                            <img src="{{$bouteille->image}}" alt="bouteille">
+                        </div>
+                        <div class="text-carte">
+                            <h2>{{$bouteille->nom}}</h2>
+                            <p>{{$bouteille->description}}</p>
+                            <h3>{{$bouteille->prix_saq}} $</h3>
+                            <div class="btn-carte">
+                                <a href="/details/{{$bouteille->id}}">Détails</a>
+                                <a href="#">Ajouter à mon celier</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carte">
-                    <div>
-                        <img src="{{asset('assets/vin-rouge.png')}}" alt="bouteille">
-                    </div>
-                    <div class="text-carte">
-                        <h2>EA Cartuxa Reserva</h2>
-                        <p>Vin rouge | 750 ml | Portugal</p>
-                        <h3>23,49 $</h3>
-                        <div class="btn-carte">
-                            <a href="#">Détails</a>
-                            <a href="#">Ajouter à mon celier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carte">
-                    <div>
-                        <img src="{{asset('assets/vin-rouge.png')}}" alt="bouteille">
-                    </div>
-                    <div class="text-carte">
-                        <h2>EA Cartuxa Reserva</h2>
-                        <p>Vin rouge | 750 ml | Portugal</p>
-                        <h3>23,49 $</h3>
-                        <div class="btn-carte">
-                            <a href="#">Détails</a>
-                            <a href="#">Ajouter à mon celier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carte">
-                    <div>
-                        <img src="{{asset('assets/vin-rouge.png')}}" alt="bouteille">
-                    </div>
-                    <div class="text-carte">
-                        <h2>EA Cartuxa Reserva</h2>
-                        <p>Vin rouge | 750 ml | Portugal</p>
-                        <h3>23,49 $</h3>
-                        <div class="btn-carte">
-                            <a href="#">Détails</a>
-                            <a href="#">Ajouter à mon celier</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carte">
-                    <div>
-                        <img src="{{asset('assets/vin-rouge.png')}}" alt="bouteille">
-                    </div>
-                    <div class="text-carte">
-                        <h2>EA Cartuxa Reserva</h2>
-                        <p>Vin rouge | 750 ml | Portugal</p>
-                        <h3>23,49 $</h3>
-                        <div class="btn-carte">
-                            <a href="#">Détails</a>
-                            <a href="#">Ajouter à mon celier</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach   
+                            
             </section>
             <section class="pagination">
-                <p>1 | 2 | 3</p>
+                <!-- Pagination -->
+                @include('../pagination.pagination', ['paginator' => $bouteilles]) 
             </section>
         </main>
 @endsection

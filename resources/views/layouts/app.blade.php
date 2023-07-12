@@ -33,20 +33,20 @@
         <footer>
             <div class="footer-items">
                 <div class="footer-item">
-                    <a href="#">
+                    <a href="/index">
                         <img src="{{asset('assets/profile.png')}}" alt="profile">
                     </a>
                     <p>Profile</p>
                 </div>
                 <div class="footer-item">
-                    <a href="#">
-                        <img src="{{asset('assets/bouteilles.png')}}" alt="cellier">
+                    <a href="/index">
+                        <img src="{{asset('assets/bouteilles.png')}}" alt="bouteilles">
                     </a>
                     <p>Bouteilles</p>
                 </div>
                 <div class="footer-item">
-                    <a href="#">
-                        <img src="{{asset('assets/cellier.png')}}" alt="recherche">
+                    <a href="/index">
+                        <img src="{{asset('assets/cellier.png')}}" alt="cellier">
                     </a>
                     <p>Cellier</p>
                 </div>

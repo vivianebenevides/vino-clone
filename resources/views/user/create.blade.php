@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('titre', 'Création de compte')
-@section('MasquerHeaderFooter', true) // pour afficher ou masquer le header et le footer
+@section('MasquerHeaderFooter', true) <!--  pour afficher ou masquer le header et le footer -->
 @section('content')
 <main class="auth-container">
       <form method="post" class="auth-form-container">
@@ -19,20 +19,21 @@
             class="auth-icon"
             placeholder="Nom"
             required
+              value="{{ old('nom') }}"
           />
         </label>
         @if($errors->has('nom'))
             <div class="message-error" >
-              * minimum 2 caracères
+              * {{ __('validation.nom.min') }}
             </div>
         @endif         
         <label class="auth-form-label">
           <img src="{{asset('assets/mail.png')}}" alt="mail" class="auth-icon" />
-          <input type="email" name="email" class="auth-form-input" placeholder="Courriel" required />
+          <input type="email" name="email" class="auth-form-input" placeholder="Courriel" required   value="{{ old('email') }}"/>
         </label>
         @if($errors->has('email'))
             <div class="message-error" >
-              * Courriel déjà utilisé
+            * {{ __('validation.email.unique') }}
             </div>
         @endif         
         <label class="auth-form-label">
@@ -47,7 +48,7 @@
         </label> 
         @if($errors->has('password'))
             <div class="message-error" >
-              * Format du mot de passe incorrect
+              * {{ __('validation.password.regex') }}
             </div>
         @endif        
               
@@ -63,7 +64,7 @@
         </label>
         @if($errors->has('password_confirmation'))
             <div class="message-error" >
-              * Mot de passe de confirmation incorrect
+              * {{ __('validation.password_confirmation.same') }}
             </div>
         @endif          
         <input
