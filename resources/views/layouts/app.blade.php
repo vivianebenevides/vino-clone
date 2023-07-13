@@ -42,13 +42,13 @@
                     <a href="/index">
                         <img src="{{asset('assets/bouteilles.png')}}" alt="bouteilles">
                     </a>
-                    <p>Bouteilles</p>
+                    <p>Catalogue</p>
                 </div>
                 <div class="footer-item">
-                    <a href="/index">
+                    <a href="/mes-celliers">
                         <img src="{{asset('assets/cellier.png')}}" alt="cellier">
                     </a>
-                    <p>Cellier</p>
+                    <p>Mes Celliers</p>
                 </div>
                 <div class="footer-item">
                     <a href="/logout">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cellier;
 
 class CellierController extends Controller
 {
@@ -13,7 +14,7 @@ class CellierController extends Controller
      */
     public function index()
     {
-        //
+        return view('celliers.mes-celliers');
     }
 
     /**
@@ -45,7 +46,7 @@ class CellierController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('celliers.detail-cellier');
     }
 
     /**
