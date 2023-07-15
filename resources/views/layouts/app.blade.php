@@ -1,16 +1,17 @@
-<!DOCTYPE html>
+<DOCTYPE html/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/global.css')}}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+@stack('css')
     <!-- Scripts pour VueJs -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <title>@yield('titre')</title>
 </head>
 <body>
-    <div id="app">    
+    <div id="app">
         @if(empty(trim($__env->yieldContent('MasquerHeaderFooter'))))
         <header>
             <nav>
@@ -25,11 +26,11 @@
             </nav>
         </header>
         @endif
-        
-        
+
+
         @yield('content')
 
-        @if(empty(trim($__env->yieldContent('MasquerHeaderFooter'))))    
+        @if(empty(trim($__env->yieldContent('MasquerHeaderFooter'))))
         <footer>
             <div class="footer-items">
                 <div class="footer-item">
@@ -45,7 +46,7 @@
                     <p>Catalogue</p>
                 </div>
                 <div class="footer-item">
-                    <a href="/mes-celliers">
+                    <a href="{{ route('celliers.index') }}">
                         <img src="{{asset('assets/cellier.png')}}" alt="cellier">
                     </a>
                     <p>Mes Celliers</p>
@@ -60,5 +61,6 @@
         </footer>
         @endif
     </div>
+    @stack('js')
 </body>
 </html>

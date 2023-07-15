@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\BouteilleCellier;
-use Illuminate\Http\Request;
 use App\Models\Cellier;
-use App\Models\Bouteille;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use function PHPUnit\Framework\isNull;
 
-class CellierController extends Controller
+class BouteilleCellierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +17,7 @@ class CellierController extends Controller
      */
     public function index()
     {
-        $celliers = Cellier::where('user_id','=',Auth::user()->id)->paginate(8);
-        return view('celliers.mes-celliers',['celliers' => $celliers]);
-
+        //
     }
 
     /**
@@ -31,7 +27,7 @@ class CellierController extends Controller
      */
     public function create()
     {
-        return view('celliers.create');
+        //
     }
 
     /**
@@ -42,21 +38,26 @@ class CellierController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation de la nom du cellier
-        $validatedData = $request->validate([
-            'nom' => 'required|min:3|max:100',
-            'note' => 'nullable',
-        ]);
-        if(!$validatedData)
-            return redirect()->back()->withErrors($validatedData)->withInput();
 
-        $user = Cellier::create([
-            'nom' => $validatedData['nom'],
-            'note'=> $validatedData['note'],
-            'user_id' =>  Auth::user()->id,
 
-        ]);
-        return redirect(route('celliers.index'));
+       $test = BouteilleCellier::where('cellier_id','=',$request->cellier_id)->where('bouteille_id','=',$request->bouteille_id);
+
+        if($test->count()==0){
+            $celliers=BouteilleCellier::create([
+                'cellier_id'=>$request->cellier_id,
+                'bouteille_id'=>$request->bouteille_id,
+                'quantite'=>$request->quantite,
+                'note'=>'',
+            ]);
+        }
+else{
+    BouteilleCellier::where('cellier_id', $request->cellier_id)
+        ->where('bouteille_id', $request->bouteille_id)
+        ->update(['quantite' => $test->first()->quantite + 1]);
+}
+
+        return redirect()->route('celliers.show',$request->cellier_id)->with('success','success');
+
     }
 
     /**
@@ -67,8 +68,7 @@ class CellierController extends Controller
      */
     public function show($id)
     {
-        $cellier = Cellier::find($id);
-        return view('celliers.detail-cellier',compact('cellier'));
+        //
     }
 
     /**
@@ -102,18 +102,10 @@ class CellierController extends Controller
      */
     public function destroy($id)
     {
-       // $cellier = Cellier::destroy($id);
+        $cellier_id = Cellier::find(BouteilleCellier::find($id)->first()->cellier_id);
+        BouteilleCellier::destroy($id);
 
-      //  return redirect(route('celliers.index'));
+        return redirect()->route('celliers.show',$cellier_id)->with('success','delete');
 
     }
-
-
-
-
-
-
-
-
-
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\CellierController;
-
+use App\Http\Controllers\BouteilleCellierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +50,8 @@ Route::post('/importer-bouteilles', [SAQController::class, 'scrapeSAQ']);
 
 
 // routes pour la vue cellier
-Route::get('/mes-celliers',  [CellierController::class, 'index'])->name('celliers.mes-celliers')->middleware('auth');
+Route::resource('celliers',  CellierController::class)->middleware('auth');
+Route::resource('bouteille-cellier',  BouteilleCellierController::class)->middleware('auth');
+Route::get('/indexCellier/{cellier_id}',  [BouteilleController::class, 'indexCellier'])->name('bouteilles.indexCellier')->middleware('auth');
 
-Route::get('/detail-cellier/{id}',  [CellierController::class, 'show'])->name('celliers.detail-cellier')->middleware('auth');
+
