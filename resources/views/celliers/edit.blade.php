@@ -3,7 +3,8 @@
 
 @section('content')
     <main class="cellier-container">
-            <form method="post" class="cellier-form-container" action="{{route('celliers.store')}}">
+            <form method="POST" class="cellier-form-container p-2" action="{{route('celliers.update', ["cellier"=>$cellier->id])}}">
+                @method('PUT')
                 @csrf
                 <label class="auth-form-label">
                     Nom du cellier
@@ -14,7 +15,7 @@
                         class="auth-icon"
                         placeholder="Nom du cellier"
                         required
-                        value="{{ old('nom') }}"
+                        value="{{ $cellier -> nom }}"
                     />
                 </label>
                 @if($errors->has('nom'))
@@ -24,18 +25,16 @@
                 @endif
                 <label class="auth-form-label">
                     Commentaire
-                    <textarea name="note" class="auth-form-input"></textarea>
+                    <textarea name="note" class="auth-form-input">{{ $cellier -> nom }}</textarea>
                 </label>
 
                 <input
                     type="submit"
-                    class="auth-form-input-submit"
+                    class="btn btn-primary mt-2"
                     value="Enregistrer"
                 />
 
             </form>
-
-
         </main>
 
         @endsection
