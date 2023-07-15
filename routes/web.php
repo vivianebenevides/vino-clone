@@ -51,14 +51,7 @@ Route::post('/importer-bouteilles', [SAQController::class, 'scrapeSAQ']);
 
 // routes pour la vue cellier
 Route::resource('celliers',  CellierController::class)->middleware('auth');
-
 Route::resource('bouteille-cellier',  BouteilleCellierController::class)->middleware('auth');
-
 Route::get('/indexCellier/{cellier_id}',  [BouteilleController::class, 'indexCellier'])->name('bouteilles.indexCellier')->middleware('auth');
-
-Route::get('/celliers/{cellier}/edit', [CellierController::class, 'edit'])->name('celliers.edit')->middleware('auth');
-// Route::put('/celliers/{cellier}', [CellierController::class, 'update'])->name('celliers.update')->middleware('auth');
-
-// Route::delete('/celliers/{cellier}', [CellierController::class, 'destroy'])->name('celliers.destroy')->middleware('auth');
 
 

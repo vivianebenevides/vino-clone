@@ -6,7 +6,7 @@
             <form method="post" class="cellier-form-container" action="{{route('celliers.store')}}">
                 @csrf
                 <label class="auth-form-label">
-                    Nom du cellier
+               Nom du cellier
                     <input
                         type="text"
                         name="nom"
