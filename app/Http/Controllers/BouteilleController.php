@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bouteille;
+use App\Models\Cellier;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -16,7 +17,6 @@ class BouteilleController extends Controller
      */
     public function index()
     {
-
         $bouteilles = Bouteille::paginate(30);
          return view('bouteilles.index',['bouteilles' => $bouteilles]);
     }
@@ -84,9 +84,7 @@ class BouteilleController extends Controller
     public function show($id)
     {
 
-
         $bouteille = Bouteille::find($id);
-
         // Vérifier si la bouteille existe
         if (!$bouteille) {
             return redirect()->route('bouteilles.index')->with('error', 'Bouteille non trouvée');
@@ -129,4 +127,12 @@ class BouteilleController extends Controller
     {
         //
     }
+
+    public function indexCellier($cellier_id)
+    {
+        $bouteilles = Bouteille::paginate(30);
+        $cellier = Cellier::find($cellier_id);
+        return view('bouteilles.index-cellier',compact('bouteilles','cellier'));
+    }
+
 }
